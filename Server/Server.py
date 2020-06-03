@@ -8,7 +8,7 @@ from http import HTTPStatus
 # TCP/IP の場合は、SOCK_STREAM を使う
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # IPアドレスとポートを指定
-    s.bind(('0.0.0.0', 50007))
+    s.bind(('0.0.0.0', 100))
     # 1 接続
     s.listen(1)
     # connection するまで待つ
@@ -22,5 +22,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 if not data:
                     break
                 print('data : {}, addr: {}'.format(data, addr))
+                print('Hello: BasicHTTP!')
                 # クライアントにデータを返す(b -> byte でないといけない)
                 conn.sendall(b'Received: ' + data)
